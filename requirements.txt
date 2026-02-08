@@ -1,0 +1,6 @@
+streamlit           # For interactive web app
+openai              # For OpenAI API access
+python-dotenv       # To load API key from .env
+PyPDF2              # To read PDF files
+pillow              # Image processing (for OCR)
+pytesseract         # OCR to extract text from images
