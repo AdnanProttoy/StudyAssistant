@@ -58,12 +58,24 @@ st.subheader("Ask a Question from Image")
             #st.warning("Please type a question about the image!")
 
 
-image_file = st.file_uploader("Upload image (describe it in text)", type=["png","jpg","jpeg"])
-image_description = st.text_area("Describe the image:")
+st.subheader("Image-based Question")
 
-if st.button("Get Image Explanation"):
-    prompt = f"Image description: {image_description}"
-    answer = get_answer(prompt)
-    st.write(answer)
+image_file = st.file_uploader("Upload an image (PNG/JPG)", type=["png", "jpg", "jpeg"])
 
+image_description = st.text_area(
+    "Describe what is written or shown in the image"
+)
 
+image_question = st.text_input("What do you want to know from this image?")
+
+if st.button("Answer Image Question"):
+    if image_description and image_question:
+        prompt = f"""
+        The user uploaded an image.
+        Image description: {image_description}
+        Question: {image_question}
+        """
+        answer = get_answer(prompt)
+        st.write(answer)
+    else:
+        st.warning("Please describe the image and ask a question.")
