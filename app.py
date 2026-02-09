@@ -42,18 +42,28 @@ if pdf_file:
 st.markdown("---")  
 
 st.subheader("Ask a Question from Image")
-image_file = st.file_uploader("Upload an image here:", type=["png", "jpg", "jpeg"])
+#image_file = st.file_uploader("Upload an image here:", type=["png", "jpg", "jpeg"])
 
-if image_file:
-    image_text = read_image_text(image_file)
-    image_question = st.text_input("Ask a question about the image:")
+##if image_file:
+    #image_text = read_image_text(image_file)
+    #image_question = st.text_input("Ask a question about the image:")
 
-    if st.button("Get Answer for Image Question"):
-        if image_question.strip():
-            prompt = f"Image content: {image_text}\nQuestion: {image_question}"
-            answer = get_answer(prompt)
-            st.subheader("Answer:")
-            st.write(answer)
-        else:
-            st.warning("Please type a question about the image!")
+    #if st.button("Get Answer for Image Question"):
+        #if image_question.strip():
+            #prompt = f"Image content: {image_text}\nQuestion: {image_question}"
+            #answer = get_answer(prompt)
+            #st.subheader("Answer:")
+            #st.write(answer)
+        #else:
+            #st.warning("Please type a question about the image!")
+
+
+image_file = st.file_uploader("Upload image (describe it in text)", type=["png","jpg","jpeg"])
+image_description = st.text_area("Describe the image:")
+
+if st.button("Get Image Explanation"):
+    prompt = f"Image description: {image_description}"
+    answer = get_answer(prompt)
+    st.write(answer)
+
 
